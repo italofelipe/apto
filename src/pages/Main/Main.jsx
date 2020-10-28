@@ -24,10 +24,6 @@ const Main = (props) => {
       setOrgData(null);
     }
   };
-  useEffect(() => {
-    console.log('ORGDATA:', orgData);
-    console.log('error:', errorREQ);
-  }, [orgData, errorREQ]);
   return (
     <StyledMain>
       <StyledH2>
