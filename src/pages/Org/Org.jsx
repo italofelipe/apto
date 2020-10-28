@@ -18,6 +18,12 @@ import Repositories from '../../components/Repositories/Repositories';
 import { StyledSubText } from '../../components/Orgs/styles';
 
 const Org = (props) => {
+  const handleLoad = () => {
+    if (!props || props === {}) {
+      window.location.href = 'http://localhost:3000/';
+    }
+  };
+  handleLoad();
   const [org, setOrg] = useState(props.location.state);
   const [repos, setRepos] = useState([]);
 
@@ -31,7 +37,9 @@ const Org = (props) => {
       setRepos([]);
     }
   };
+
   useEffect(() => {
+    window.addEventListener('load', handleLoad);
     chamar();
   }, []);
   return (

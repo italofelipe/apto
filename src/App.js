@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Org from './pages/Org/Org';
 import Main from './pages/Main/Main';
@@ -11,6 +11,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/org" component={Org} />
+          <Route path="*" render={() => <Redirect to={Main} />} />
         </Switch>
       </BrowserRouter>
     </div>
