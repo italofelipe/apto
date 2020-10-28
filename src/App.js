@@ -1,18 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Repository from './pages/Repository/Repository';
+import Org from './pages/Org/Org';
 import Main from './pages/Main/Main';
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/rep" component={Repository} />
+          <Route exact path="/org" component={Org} />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledRepositoryContainer = styled.div`
+export const StyledOrgContainer = styled.div`
   display: flex;
   flex-flow: column;
   width: 95%;
@@ -13,7 +13,7 @@ export const StyledRepositoryContainer = styled.div`
     border: 3px solid #2ba84a;
   }
 `;
-export const StyledRepository = styled.div`
+export const StyledOrg = styled.div`
   display: flex;
   flex-flow: row;
   width: 100%;

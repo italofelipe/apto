@@ -11,7 +11,6 @@ const Form = ({ change, val, sub }) => (
       placeholder="Digite uma organização"
     />
     <StyledButton onClick={sub}>Pesquisar</StyledButton>
-    <p>{val}</p>
   </StyledForm>
 );
 export default Form;

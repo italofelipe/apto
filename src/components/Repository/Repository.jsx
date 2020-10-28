@@ -1,6 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCodeBranch,
@@ -37,4 +39,4 @@ const Repository = (props) => (
   </StyledRepositoryContainer>
 );
 
-export default Repository;
+export default withRouter(Repository);

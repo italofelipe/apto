@@ -1,44 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { StyledMain } from './styles';
 import Form from '../../components/Form/Form';
 import http from '../../services/http';
-import Repositories from '../../components/Repositories/Repositories';
+import { StyledLink, StyledH2 } from '../../styles/index';
+import Org from '../../components/Orgs/Orgs';
 
-const Main = () => {
+const Main = (props) => {
   const [org, setOrg] = useState('');
-  const [repos, setRepos] = useState([]);
-  const [orgName, setOrgname] = useState('');
+  const [orgData, setOrgData] = useState(null);
 
   const chamar = async (e) => {
     e.preventDefault();
-    setRepos([]);
-
     try {
-      // dispatch({ type: 'FETCH_ORGS', payload: org });
       const response = await http.get(`${org}`);
-      setRepos([]);
-      const repositories = await http.get(`${response.data.repos_url}`);
-      setOrgname(response.data.name);
-      setRepos([repositories.data]);
+      console.log('reponse org', response);
+      setOrgData(response.data);
       setOrg('');
     } catch (error) {
       console.error('Deu pau', error);
-      setRepos([]);
     }
   };
-  useEffect(() => {
-    console.log('Respos STATE', repos);
-  }, [repos]);
   return (
     <StyledMain>
+      <StyledH2>
+        Desafio da APTO, feito com React, React Router DOM e Styled Components
+      </StyledH2>
       <Form change={(e) => setOrg(e.target.value)} val={org} sub={chamar} />
-
-      {repos.length !== 0 ? (
-        <Repositories repositories={repos} org={orgName} />
-      ) : (
-        <h2>No repositories. Search for a company so start</h2>
+      {orgData && (
+        <StyledLink
+          to={{
+            pathname: '/org',
+            state: { orgData },
+          }}
+        >
+          <Org
+            name={orgData.name}
+            image={orgData.avatar_url}
+            description={orgData.description}
+          />
+        </StyledLink>
       )}
     </StyledMain>
   );
 };
-export default Main;
+export default withRouter(Main);
