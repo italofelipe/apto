@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import http from '../../services/http';
 import { StyledForm, StyledButton, StyledInput } from './styles';
 
-const Form = () => (
-  <StyledForm>
-    <StyledInput placeholder="Digite uma organização" />
-    <StyledButton>Pesquisar</StyledButton>
+// eslint-disable-next-line react/prop-types
+const Form = ({ change, val, sub }) => (
+  <StyledForm onSubmit={sub}>
+    <StyledInput
+      value={val}
+      onChange={(e) => change(e)}
+      placeholder="Digite uma organização"
+    />
+    <StyledButton onClick={sub}>Pesquisar</StyledButton>
+    <p>{val}</p>
   </StyledForm>
 );
 export default Form;

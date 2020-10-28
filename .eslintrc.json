@@ -22,7 +22,6 @@
         "prettier"
     ],
     "rules": {
-			"prettier/prettier": "error",
 			"react-hooks/rules-of-hooks": "error",
 			"react-hooks/exhaustive-deps": "warn",
       "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".js"] }],
@@ -31,6 +30,11 @@
 			"no-use-before-define": "off",
       "react/jsx-indent" : ["warn", 2],
       "arrow-parens": ["error", "always"],
-      "no-unused-vars": "off"       
+      "no-unused-vars": "off",
+      "no-underscore-dangle": "off",
+      "prettier/prettier": ["error", {
+        "endOfLine":"auto"
+      }],
+      "operator-linebreak": ["error", "after", { "overrides": { "?": "ignore", ":": "ignore" } }]       
     }
 }

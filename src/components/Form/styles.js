@@ -4,9 +4,8 @@ import { font } from '../../styles';
 export const StyledForm = styled.form`
   display: flex;
   flex-flow: row;
-  width: 80vw;
   height: 80px;
-  margin: 20px 30px;
+  margin: 20px 10px;
   border-radius: 5px;
   box-shadow: 5px 5px 15px #ccc;
   padding: 15px 20px;
