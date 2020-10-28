@@ -27,3 +27,10 @@ export const StyledH2 = styled.h2`
   font-size: 22px;
   text-align: center;
 `;
+export const StyledGreen = styled.h3`
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  color: #248232;
+  margin: 0 5px;
+`;

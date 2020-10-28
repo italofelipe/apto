@@ -1,21 +1,28 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { StyledMain, StyledImage, StyledHeader } from './styles';
-import { StyledTitle } from '../../styles/index';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBoxes,
+  faMapMarker,
+  faUserCheck,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  StyledMain,
+  StyledImage,
+  StyledHeader,
+  StyledHeaderContainer,
+  StyledHeaderSubContainer,
+} from './styles';
+import { StyledTitle, StyledGreen } from '../../styles/index';
 import http from '../../services/http';
 import Repositories from '../../components/Repositories/Repositories';
+import { StyledSubText } from '../../components/Orgs/styles';
 
 const Org = (props) => {
-  console.log('PROPS REP', props);
-
   const [org, setOrg] = useState(props.location.state);
   const [repos, setRepos] = useState([]);
 
   const chamar = async () => {
     const { orgData } = org;
-    console.log('org', orgData);
     try {
       const repositories = await http.get(`${orgData.repos_url}`);
       setRepos([repositories.data]);
@@ -26,15 +33,32 @@ const Org = (props) => {
   };
   useEffect(() => {
     chamar();
-    console.log('repos', repos);
-    console.log('Org PROPS', org);
   }, []);
   return (
     <div>
       <StyledMain>
         <StyledHeader>
-          <StyledImage src={org.orgData.avatar_url} />
-          <StyledTitle>{org.orgData.name}</StyledTitle>
+          <StyledHeaderContainer size="md">
+            <StyledImage src={org.orgData.avatar_url} />
+            <StyledTitle>{org.orgData.name}</StyledTitle>
+            <StyledHeaderSubContainer>
+              <FontAwesomeIcon icon={faBoxes} />
+              <StyledSubText>{org.orgData.public_repos}</StyledSubText>
+
+              <FontAwesomeIcon icon={faMapMarker} />
+              <StyledSubText>{org.orgData.location}</StyledSubText>
+
+              {org.orgData.is_verified && (
+                <>
+                  <FontAwesomeIcon icon={faUserCheck} />
+                  <StyledGreen>Verified</StyledGreen>
+                </>
+              )}
+            </StyledHeaderSubContainer>
+          </StyledHeaderContainer>
+          <StyledHeaderContainer center>
+            <StyledSubText>{org.orgData.description}</StyledSubText>
+          </StyledHeaderContainer>
         </StyledHeader>
         {repos.length !== 0 ? (
           <Repositories

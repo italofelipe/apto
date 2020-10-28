@@ -44,6 +44,9 @@ export const StyledDescription = styled.p`
 export const StyledSubText = styled.small`
   font-weight: lighter;
   font-size: 10px;
-  margin: 15px 5vw 0px 5px;
+  margin: 5px 5vw 0px 10px;
   line-height: 12px;
+  align-self: center;
+  justify-self: center;
+  display: flex;
 `;

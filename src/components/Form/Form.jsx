@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import http from '../../services/http';
+import React from 'react';
 import { StyledForm, StyledButton, StyledInput } from './styles';
 
-// eslint-disable-next-line react/prop-types
 const Form = ({ change, val, sub }) => (
   <StyledForm onSubmit={sub}>
     <StyledInput

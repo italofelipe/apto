@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { StyledMain } from './styles';
 import Form from '../../components/Form/Form';
@@ -14,7 +14,6 @@ const Main = (props) => {
     e.preventDefault();
     try {
       const response = await http.get(`${org}`);
-      console.log('reponse org', response);
       setOrgData(response.data);
       setOrg('');
     } catch (error) {
@@ -44,4 +43,4 @@ const Main = (props) => {
     </StyledMain>
   );
 };
-export default withRouter(Main);
+export default Main;
