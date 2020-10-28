@@ -20,7 +20,11 @@ const Repository = (props) => (
   <StyledRepositoryContainer disabled={props.disabled}>
     <StyledRepository>
       <StyledRepoTitle>{`${props.name}:`}</StyledRepoTitle>
-      <StyledDescription>{props.description}</StyledDescription>
+      {props.description ? (
+        <StyledDescription>{props.description}</StyledDescription>
+      ) : (
+        <StyledSubText>No description available</StyledSubText>
+      )}
     </StyledRepository>
 
     <StyledBottomTab>
