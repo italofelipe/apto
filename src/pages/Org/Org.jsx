@@ -40,13 +40,17 @@ const Org = (props) => {
         <StyledHeader>
           <StyledHeaderContainer size="md">
             <StyledImage src={org.orgData.avatar_url} />
-            <StyledTitle>{org.orgData.name}</StyledTitle>
+            <StyledTitle>{org.orgData.name || org.orgData.login}</StyledTitle>
             <StyledHeaderSubContainer>
               <FontAwesomeIcon icon={faBoxes} />
               <StyledSubText>{org.orgData.public_repos}</StyledSubText>
 
-              <FontAwesomeIcon icon={faMapMarker} />
-              <StyledSubText>{org.orgData.location}</StyledSubText>
+              {org.orgData.location && (
+                <>
+                  <FontAwesomeIcon icon={faMapMarker} />
+                  <StyledSubText>{org.orgData.location}</StyledSubText>
+                </>
+              )}
 
               {org.orgData.is_verified && (
                 <>

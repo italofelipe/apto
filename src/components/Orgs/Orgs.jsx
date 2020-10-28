@@ -5,13 +5,18 @@ import {
   StyledRepoTitle,
   StyledDescription,
   StyledOrgContainer,
+  StyledSubText,
 } from './styles';
 
 const Org = (props) => (
   <StyledOrgContainer>
     <StyledOrg>
-      <StyledRepoTitle>{`${props.name}`}</StyledRepoTitle>
-      <StyledDescription>{props.description}</StyledDescription>
+      <StyledRepoTitle>{`${props.name || props.login}`}</StyledRepoTitle>
+      {props.description ? (
+        <StyledDescription>{props.description}</StyledDescription>
+      ) : (
+        <StyledSubText>No description available</StyledSubText>
+      )}
     </StyledOrg>
   </StyledOrgContainer>
 );
